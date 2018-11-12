@@ -12,5 +12,6 @@ double v=k/(cp*p);
 
 int main()
 {
+  
   return 1;
 }

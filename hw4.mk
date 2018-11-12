@@ -1,7 +1,6 @@
 
 
 
-
 Resultados_hw4.pdf:Plots_hww4.py ode.out pde.out
 	python3 Plots_hww4.py
 
