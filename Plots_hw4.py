@@ -3,23 +3,26 @@ import matplotlib.pylab as plt
 import math
 
 
-datosODE1=np.genfromtxt("datos1.dat",delimiter=",")
+datosODE1=np.genfromtxt("datosODE1.dat",delimiter=",")
 
-datosODE2=np.genfromtxt("datos2.dat",delimiter=",")
+#datosODE2=np.genfromtxt("datos2.dat",delimiter=",")
 
-posx=datosODE1[:,0]
-posy=datosODE1[:,1]
-t1=datosODE1[:,2]
-vel1=datosODE1[:,3]
+t1=datosODE1[:,0]
+posx=datosODE1[:,1]
+posy=datosODE1[:,2]
+velx=datosODE1[:,3]
+vely=datosODE1[:,4]
+
 
 plt.figure()
-plt.plot()
+plt.plot(posx,posy)
 plt.title('')
-plt.xlabel()
-plt.ylabel()
+#plt.xlabel()
+#plt.ylabel()
 plt.legend(loc="best")
+plt.show()
 #plt.savefig(posxtiempo.pdf")
-
+'''
 t2=datosODE2[:,0]
 p1x=datosODE2[:,1]
 p1y=datosODE2[:,2]
@@ -184,4 +187,4 @@ plt.title('')
 plt.xlabel()
 plt.ylabel()
 plt.legend(loc="best")
-plt.savefig("c3g5prom.pdf")
+plt.savefig("c3g5prom.pdf")'''
