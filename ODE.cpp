@@ -26,7 +26,7 @@ double vyp(float vx,float vy);
 double vyp(float vx,float vy)
 {
   //return (-g*(c*vy*(pow(vx,2)+pow(vy,2))))/(m*(sqrt(pow(vx,2)+pow(vy,2))));
-  return (-c*v*v)/m;
+  return (-g*((-c*vy*vy)/m));
 }
 
 
@@ -49,12 +49,13 @@ int main()
   posy[0]=0.0;
 
 
-  velx[0]=velx[0]-0.5*delta*(-c*(velx[0]*velx[0])/m);
-  vely[0]=vely[0]-0.5*delta*(-g*-(c*(vely[0]*vely[0])/m));
+  velx[0]=velx[0]-0.5*delta*(vxp(velx[0],vely[0]));
+  vely[0]=vely[0]-0.5*delta*(vyp(velx[0],vely[0]));
 
   for (int i=1;i<N;i++)
   {
     double norma_v=sqrt(velx[i-1]*velx[i-1]+vely[i-1]*vely[i-1]);
+
     velx[i]=velx[i-1]+delta*(-(c*norma_v*velx[i-1])/m);
     vely[i]=vely[i-1]+delta*(-g-(c*norma_v*vely[i-1])/m);
     posx[i]=posx[i-1]+velx[i-1]*delta;
