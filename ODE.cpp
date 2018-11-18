@@ -5,7 +5,7 @@ using namespace std;
 
 //Condiciones iniciales
 float g=10.0;
-float c=0.2;
+double c=0.2;
 float m=0.2;
 float xi=0;
 float v=300;
@@ -13,22 +13,22 @@ float tet=45;
 int N=10000;
 int tetmax=70;
 
-float funcion1(float y, float y2, float x);
-float funcion2(float y, float y2, float x);
 
-float vxp(float vx,float vy);
-float vxp(float vx,float vy)
+
+double vxp(float vx,float vy);
+double vxp(float vx,float vy)
 {
   //return (-c*vx*(pow(vx,2)+pow(vy,2)))/(m*(sqrt(pow(vx,2)+pow(vy,2))));
   return (-c*vx*vx)/m;
 }
 
-float vyp(float vx,float vy);
-float vyp(float vx,float vy)
+double vyp(float vx,float vy);
+double vyp(float vx,float vy)
 {
   //return (-g*(c*vy*(pow(vx,2)+pow(vy,2))))/(m*(sqrt(pow(vx,2)+pow(vy,2))));
-  return -g*(-c*vy*vy)/m;
+  return (-c*v*v)/m;
 }
+
 
 float vxin=v*cos(tet);
 float vyin=v*sin(tet);
@@ -40,7 +40,7 @@ int main()
   double vely[N];
   double posx[N];
   double posy[N];
-  float delta=0.0001;
+  float delta=0.001;
   //Colocando las condiciones iniciales
   tiempo[0]=0.0;
   velx[0]=v*cos(tet);
@@ -49,7 +49,10 @@ int main()
   posy[0]=0.0;
 
 
-  for (int i=0;i<N;i++)
+  velx[0]=velx[0]-0.5*delta*(-c*(velx[0]*velx[0])/m);
+  vely[0]=vely[0]-0.5*delta*(-g*-(c*(vely[0]*vely[0])/m));
+
+  for (int i=1;i<N;i++)
   {
     double norma_v=sqrt(velx[i-1]*velx[i-1]+vely[i-1]*vely[i-1]);
     velx[i]=velx[i-1]+delta*(-(c*norma_v*velx[i-1])/m);
@@ -66,7 +69,7 @@ int main()
     velx[0]=v*cos(l);
     vely[0]=v*sin(l);
 
-    for (int k=0;k<=N;k++)
+    for (int k=1;k<=N;k++)
 {
   double norma_v=sqrt(velx[k-1]*velx[k-1]+vely[k-1]*vely[k-1]);
   velx[k]=velx[k-1]+delta*(-(c*norma_v*velx[k-1])/m);
@@ -74,13 +77,8 @@ int main()
   posx[k]=posx[k-1]+velx[k-1]*delta;
   posy[k]=posy[k-1]+vely[k-1]*delta;
   tiempo[k]=tiempo[k-1]+delta;
-  cout<<tiempo[k]<<","<<posx[k]<<","<<posy[k]<<","<<velx[k]<<","<<vely[k]<<endl;
-
+  //cout<<tiempo[k]<<","<<posx[k]<<","<<posy[k]<<","<<velx[k]<<","<<vely[k]<<endl;
 }
-
 }
-
-
-
   return 0;
 }
