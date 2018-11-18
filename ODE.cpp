@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <cstdlib>
+#include <fstream>
 using namespace std;
 
 //Condiciones iniciales
@@ -10,7 +11,7 @@ float m=0.2;
 float xi=0;
 float v=300;
 float tet=45;
-int N=10000;
+int N=17500;
 int tetmax=70;
 
 
@@ -43,14 +44,17 @@ int main()
   float delta=0.001;
   //Colocando las condiciones iniciales
   tiempo[0]=0.0;
-  velx[0]=v*cos(tet);
-  vely[0]=v*sin(tet);
+
+  vely[0]=
   posx[0]=0.0;
   posy[0]=0.0;
 
+  velx[0]=v*cos(tet)-0.5*delta*(vxp(velx[0],vely[0]));
+  vely[0]=v*sin(tet)-0.5*delta*(vyp(velx[0],vely[0]));
 
-  velx[0]=velx[0]-0.5*delta*(vxp(velx[0],vely[0]));
-  vely[0]=vely[0]-0.5*delta*(vyp(velx[0],vely[0]));
+
+  ofstream archivo ("datosODE1.dat");
+  archivo.is_open();
 
   for (int i=1;i<N;i++)
   {
@@ -61,9 +65,12 @@ int main()
     posx[i]=posx[i-1]+velx[i-1]*delta;
     posy[i]=posy[i-1]+vely[i-1]*delta;
     tiempo[i]=tiempo[i-1]+delta;
-    cout<<tiempo[i]<<","<<posx[i]<<","<<posy[i]<<","<<velx[i]<<","<<vely[i]<<endl;
-
+    //cout<<tiempo[i]<<","<<posx[i]<<","<<posy[i]<<","<<velx[i]<<","<<vely[i]<<endl;
+    archivo <<tiempo[i]<<","<<posx[i]<<","<<posy[i]<<","<<velx[i]<<","<<vely[i];
   }
+
+  archivo.close();
+
 //Para los casos en los que varia el angulo
   for (int l=10;l<=tetmax;l+=10)
   {
