@@ -77,10 +77,18 @@ void caso1()
 
       }
 
-
+    }
+  }
+  //Actualizando tiempo
+  for(int i=0; i<50; i++)
+  {
+    for(int j=0; j<50; j++)
+    {
+      temp1[i][j] = temp_fu1[i][j];
     }
   }
 }
+
 
 void caso2()
 {
@@ -96,6 +104,14 @@ void caso2()
         temp_fu2[i][j]=temp2[i][j]+(((constante*deltat)/pow(delta,2))*((temp2[i+1][j]+temp2[i-1][j]-2*temp2[i][j])+(temp2[i][j+1]+temp2[i][j-1]-2*temp2[i][j])));
 
       }
+    }
+  }
+//Actualizando tiempo
+  for(int i=0; i<50; i++)
+  {
+    for(int j=0; j<50; j++)
+    {
+      temp2[i][j] = temp_fu2[i][j];
     }
   }
 }
@@ -114,6 +130,22 @@ void caso3()
       { //Arreglando la ecuacion de landau para dos dimensiones
         temp_fu3[i][j]=temp3[i][j]+(((constante*deltat)/pow(delta,2))*((temp3[i+1][j]+temp3[i-1][j]-2*temp3[i][j])+(temp3[i][j+1]+temp3[i][j-1]-2*temp3[i][j])));
       }
+      for(int m=1; m<=50; m++)
+      {
+					temp_fu3[0][m] = temp_fu3[50][m];
+			}
+			for(int n=1; n<=50; n++)
+      {
+				temp_fu3[n][0] = temp_fu3[n][49];
+			}
+    }
+  }
+  //actualizando el tiempo
+  for(int i=0; i<50; i++)
+  {
+    for(int j=0; j<50; j++)
+    {
+      temp3[i][j] = temp_fu3[i][j];
     }
   }
 }

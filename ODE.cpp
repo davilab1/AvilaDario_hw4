@@ -14,8 +14,6 @@ float tet=45;
 int N=17500;
 int tetmax=70;
 
-
-
 double vxp(float vx,float vy);
 double vxp(float vx,float vy)
 {
@@ -49,8 +47,7 @@ int main()
   posx[0]=0.0;
   posy[0]=0.0;
 
-  velx[0]=v*cos(tet)-0.5*delta*(vxp(velx[0],vely[0]));
-  vely[0]=v*sin(tet)-0.5*delta*(vyp(velx[0],vely[0]));
+
 
 
   ofstream archivo ("datosODE1.dat");
@@ -66,27 +63,37 @@ int main()
     posy[i]=posy[i-1]+vely[i-1]*delta;
     tiempo[i]=tiempo[i-1]+delta;
     //cout<<tiempo[i]<<","<<posx[i]<<","<<posy[i]<<","<<velx[i]<<","<<vely[i]<<endl;
-    archivo <<tiempo[i]<<","<<posx[i]<<","<<posy[i]<<","<<velx[i]<<","<<vely[i];
+    archivo <<tiempo[i]<<","<<posx[i]<<","<<posy[i]<<","<<velx[i]<<","<<vely[i]<<endl;
   }
 
   archivo.close();
 
+
 //Para los casos en los que varia el angulo
+ofstream file ("datosODE2.dat");
+file.is_open();
+
   for (int l=10;l<=tetmax;l+=10)
   {
     velx[0]=v*cos(l);
     vely[0]=v*sin(l);
+    velx[0]=v*cos(l)-0.5*delta*(vxp(velx[0],vely[0]));
+    vely[0]=v*sin(l)-0.5*delta*(vyp(velx[0],vely[0]));
 
     for (int k=1;k<=N;k++)
-{
-  double norma_v=sqrt(velx[k-1]*velx[k-1]+vely[k-1]*vely[k-1]);
-  velx[k]=velx[k-1]+delta*(-(c*norma_v*velx[k-1])/m);
-  vely[k]=vely[k-1]+delta*(-g-(c*norma_v*vely[k-1])/m);
-  posx[k]=posx[k-1]+velx[k-1]*delta;
-  posy[k]=posy[k-1]+vely[k-1]*delta;
-  tiempo[k]=tiempo[k-1]+delta;
-  //cout<<tiempo[k]<<","<<posx[k]<<","<<posy[k]<<","<<velx[k]<<","<<vely[k]<<endl;
-}
-}
+    {
+      double norma_v=sqrt(velx[k-1]*velx[k-1]+vely[k-1]*vely[k-1]);
+      velx[k]=velx[k-1]+delta*(-(c*norma_v*velx[k-1])/m);
+      vely[k]=vely[k-1]+delta*(-g-(c*norma_v*vely[k-1])/m);
+      posx[k]=posx[k-1]+velx[k-1]*delta;
+      posy[k]=posy[k-1]+vely[k-1]*delta;
+      tiempo[k]=tiempo[k-1]+delta;
+      //cout<<tiempo[k]<<","<<posx[k]<<","<<posy[k]<<","<<velx[k]<<","<<vely[k]<<endl;
+      file<<tiempo[k]<<","<<posx[k]<<","<<posy[k]<<","<<velx[k]<<","<<vely[k]<<endl;
+      file<<endl;
+    }
+
+  }
+file.close();
   return 0;
 }

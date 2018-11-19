@@ -5,7 +5,7 @@ import math
 
 datosODE1=np.genfromtxt("datosODE1.dat",delimiter=",")
 
-#datosODE2=np.genfromtxt("datos2.dat",delimiter=",")
+datosODE2=np.genfromtxt("datosODE2.dat",delimiter=",")
 
 time1=datosODE1[:,0]
 posx=datosODE1[:,1]
@@ -20,26 +20,26 @@ plt.title('')
 #plt.xlabel()
 #plt.ylabel()
 plt.legend(loc="best")
-plt.show()
+
 #plt.savefig(posxtiempo.pdf")
 
-t1=datosODE2[:,0]
+#t1=datosODE2[:,0]
 p1x=datosODE2[:,1]
 p1y=datosODE2[:,2]
-v1x=datosODE2[:,3]
-v1y=datosODE2[:,4]
-
-t2=datosODE2[:,5]
+#v1x=datosODE2[:,3]
+#v1y=datosODE2[:,4]
+'''
+#t2=datosODE2[:,5]
 p2x=datosODE2[:,6]
 p2y=datosODE2[:,7]
-v2x=datosODE2[:,8]
-v2y=datosODE2[:,9]
+#v2x=datosODE2[:,8]
+#v2y=datosODE2[:,9]
 
-t3=datosODE2[:,10]
+#t3=datosODE2[:,10]
 p3x=datosODE2[:,11]
 p3y=datosODE2[:,12]
-v3x=datosODE2[:,13]
-v3y=datosODE2[:,14]
+#v3x=datosODE2[:,13]
+#v3y=datosODE2[:,14]
 
 t4=datosODE2[:,15]
 p4x=datosODE2[:,16]
@@ -64,10 +64,11 @@ p7x=datosODE2[:,31]
 p7y=datosODE2[:,32]
 v7x=datosODE2[:,33]
 v7y=datosODE2[:,34]
-
+'''
 plt.figure()
 plt.plot(p1x,p1y,label="10")
-plt.plot(p2x,p2y,label="20")
+plt.show()
+'''plt.plot(p2x,p2y,label="20")
 plt.plot(p3x,p3y,label="30")
 plt.plot(p4x,p4y,label="40")
 plt.plot(p5x,p5y,label="50")
@@ -206,4 +207,4 @@ plt.title('')
 plt.xlabel()
 plt.ylabel()
 plt.legend(loc="best")
-plt.savefig("c3g5prom.pdf")
+plt.savefig("c3g5prom.pdf")'''
