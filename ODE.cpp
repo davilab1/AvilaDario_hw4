@@ -11,7 +11,8 @@ float m=0.2;
 float xi=0;
 float v=300;
 float tet=45;
-int N=17500;
+int N=1800;
+
 int tetmax=70;
 
 double vxp(float vx,float vy);
@@ -39,16 +40,24 @@ int main()
   double vely[N];
   double posx[N];
   double posy[N];
+
+  double tiempo2[N];
+  double velx2[N];
+  double vely2[N];
+  double posx2[N];
+  double posy2[N];
+
   float delta=0.001;
   //Colocando las condiciones iniciales
   tiempo[0]=0.0;
-
-  vely[0]=
+  velx[0]=v*cos(tet);
+  vely[0]=v*sin(tet);
   posx[0]=0.0;
   posy[0]=0.0;
 
 
-
+  velx[0]=v*cos(tet)-0.5*delta*(-(c*pow(velx[0],2))/m);
+  vely[0]=v*sin(tet)-0.5*delta*(-g-(c*pow(vely[0],2))/m);
 
   ofstream archivo ("datosODE1.dat");
   archivo.is_open();
@@ -75,22 +84,26 @@ file.is_open();
 
   for (int l=10;l<=tetmax;l+=10)
   {
-    velx[0]=v*cos(l);
-    vely[0]=v*sin(l);
-    velx[0]=v*cos(l)-0.5*delta*(vxp(velx[0],vely[0]));
-    vely[0]=v*sin(l)-0.5*delta*(vyp(velx[0],vely[0]));
+    velx2[0]=v*cos(l);
+    vely2[0]=v*sin(l);
+    velx2[0]=v*cos(l)-0.5*delta*(vxp(velx[0],vely[0]));
+    vely2[0]=v*sin(l)-0.5*delta*(vyp(velx[0],vely[0]));
+    posx2[0]=0.0;
+    posy2[0]=0.0;
 
     for (int k=1;k<=N;k++)
     {
-      double norma_v=sqrt(velx[k-1]*velx[k-1]+vely[k-1]*vely[k-1]);
-      velx[k]=velx[k-1]+delta*(-(c*norma_v*velx[k-1])/m);
-      vely[k]=vely[k-1]+delta*(-g-(c*norma_v*vely[k-1])/m);
-      posx[k]=posx[k-1]+velx[k-1]*delta;
-      posy[k]=posy[k-1]+vely[k-1]*delta;
-      tiempo[k]=tiempo[k-1]+delta;
+      double norma_v=sqrt(velx2[k-1]*velx2[k-1]+vely2[k-1]*vely2[k-1]);
+
+      velx2[k]=velx2[k-1]+delta*(-(c*norma_v*velx2[k-1])/m);
+      vely2[k]=vely2[k-1]+delta*(-g-(c*norma_v*vely2[k-1])/m);
+
+      posx2[k]=posx2[k-1]+velx2[k-1]*delta;
+      posy2[k]=posy2[k-1]+vely2[k-1]*delta;
+
+      tiempo2[k]=tiempo2[k-1]+delta;
       //cout<<tiempo[k]<<","<<posx[k]<<","<<posy[k]<<","<<velx[k]<<","<<vely[k]<<endl;
-      file<<tiempo[k]<<","<<posx[k]<<","<<posy[k]<<","<<velx[k]<<","<<vely[k]<<endl;
-      file<<endl;
+      file<<tiempo2[k]<<","<<posx2[k]<<","<<posy2[k]<<","<<velx2[k]<<","<<vely2[k]<<endl;
     }
 
   }
