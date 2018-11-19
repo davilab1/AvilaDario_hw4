@@ -88,143 +88,165 @@ plt.close()
 
 
 
+#---------------------------------------------------------------------------#---------------------------------------------------------------------------
 
-'''
 #PDE 3D
+#Guia para elaboracion de correctas grafics en 3D https://jakevdp.github.io/PythonDataScienceHandbook/04.12-three-dimensional-plotting.html
 
-datosPDE=np.genfromtxt("datosPDE.dat",delimiter=",")
-xP=np.arange(0,50,1)
-yP=np.arange(0,50,1)
+xP=np.linspace(0,50,1)
+yP=np.linspace(0,50,1)
 x,y = np.meshgrid(xP,yP, sparse=True)
 
 
 #caso 1
-plt.figure()
+datosC11=np.genfromtxt("datosPDEC11.dat",delimiter=",")
+fig=plt.figure()
 ax = fig.gca(projection='3d')
+sup=ax.plot_trisurf(x,y,datosC11,antialiased=True)
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Temperatura')
+plt.title("Condiciones iniciales Caso 1")
+plt.show()
+#plt.savefig("c1g1inial.pdf")'''
 
-#plt.savefig("c1g1inial.pdf")
-
+'''
 plt.figure()
+datosC12=np.genfromtxt("datosPDEC12.dat",delimiter=",")
 ax = fig.gca(projection='3d')
+sup=ax.plot_trisurf(x,y,,antialiased=True)
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Temperatura')
-
+plt.title("Estado Intermedio Caso 1")
 #plt.savefig("c1g2inter.pdf")
 
 
 plt.figure()
+datosC13=np.genfromtxt("datosPDEC13.dat",delimiter=",")
 ax = fig.gca(projection='3d')
+sup=ax.plot_trisurf(x,y,,antialiased=True)
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Temperatura')
-
+plt.title("Estado Intermedio 2 Caso 1" )
 plt.legend(loc="best")
 #plt.savefig("c1g3inter.pdf")
 
 plt.figure()
+datosC14=np.genfromtxt("datosPDEC14.dat",delimiter=",")
 ax = fig.gca(projection='3d')
+sup=ax.plot_trisurf(x,y,,antialiased=True)
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Temperatura')
-
+plt.title("Estado Intermedio Caso ")
 #plt.savefig("c1g4equi.pdf")
 
 plt.figure()
-ax = fig.gca(projection='3d')
-ax.plot_trisurf( linewidth=0.2, antialiased=True, cmap=cm.jet)
-ax.set_xlabel('X')
-ax.set_ylabel('Y')
-ax.set_zlabel('Temperatura')
-
+datosC15=np.genfromtxt("datosPDEC14.dat",delimiter=",")
+plt.plot()
+plt.title("Temperatura promedio Caso 3")
 plt.legend(loc="best")
 #plt.savefig("c1g5prom.pdf")
 
-
+#----------------------------------------------------------------------#--------------------------------------------------------------------------------
 #caso 2
 plt.figure()
+datosC21=np.genfromtxt("datosPDEC21.dat",delimiter=",")
 ax = fig.gca(projection='3d')
+sup=ax.plot_trisurf(x,y,,antialiased=True)
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Temperatura')
-
-
+plt.title("Condiciones iniciales Caso 2")
 #plt.savefig("c2g1inial.pdf")
 
 
 plt.figure()
+datosC22=np.genfromtxt("datosPDEC22.dat",delimiter=",")
 ax = fig.gca(projection='3d')
+sup=ax.plot_trisurf(x,y,,antialiased=True)
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Temperatura')
-
-plt.legend(loc="best")
+plt.title("Estado Intermedio-Caso 2")
 #plt.savefig("c2g2inte.pdf")
 
 plt.figure()
+datosC23=np.genfromtxt("datosPDEC23.dat",delimiter=",")
 ax = fig.gca(projection='3d')
+sup=ax.plot_trisurf(x,y,,antialiased=True)
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Temperatura')
+plt.title("Estado Intermedio 2- Caso 2")
 
-plt.legend(loc="best")
 #plt.savefig("c3g3inter.pdf")
 
 plt.figure()
+datosC24=np.genfromtxt("datosPDEC24.dat",delimiter=",")
 ax = fig.gca(projection='3d')
+sup=ax.plot_trisurf(x,y,,antialiased=True)
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Temperatura')
-
-
+plt.title("Configuracion de Equilibrio Caso 1")
 #plt.savefig("c2g4equi.pdf")
 
 plt.figure()
-ax = fig.gca(projection='3d')
-ax.set_xlabel('X')
-ax.set_ylabel('Y')
+datosC25=np.genfromtxt("datosPDEC25.dat",delimiter=",")
+plt.plot()
 ax.set_zlabel('Temperatura')
-
-
+plt.title("Temperatura promedio Caso 3")
 #plt.savefig("c2g5prom.pdf")
 
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------
 #caso 3
 
 plt.figure()
+datosC31=np.genfromtxt("datosPDEC31.dat",delimiter=",")
 ax = fig.gca(projection='3d')
+sup=ax.plot_trisurf(x,y,,antialiased=True)
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Temperatura')
-
+plt.title("Condiciones iniciales Caso 2")
 #plt.savefig("c3g1inial.pdf")
 
 plt.figure()
+datosC32=np.genfromtxt("datosPDEC32.dat",delimiter=",")
 ax = fig.gca(projection='3d')
+sup=ax.plot_trisurf(x,y,,antialiased=True)
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Temperatura')
+plt.title("Estado Intermedio Caso 3")
 #plt.savefig("c3g2inter.pdf")
 
 plt.figure()
+datosC33=np.genfromtxt("datosPDEC33.dat",delimiter=",")
 ax = fig.gca(projection='3d')
+sup=ax.plot_trisurf(x,y,,antialiased=True)
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Temperatura')
+plt.title("Estado Intermedio 2- Caso 3 ")
 #plt.savefig("c3g3inter.pdf")
 
 plt.figure()
+datosC34=np.genfromtxt("datosPDEC34.dat",delimiter=",")
 ax = fig.gca(projection='3d')
+sup=ax.plot_trisurf(x,y,,antialiased=True)
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Temperatura')
+plt.title("Configuracion de Equilibrio Caso 3")
 #plt.savefig("c3g4equi.pdf")
 
 plt.figure()
-ax = fig.gca(projection='3d')
-ax.set_xlabel('X')
-ax.set_ylabel('Y')
-ax.set_zlabel('Temperatura')
+datosC35=np.genfromtxt("datosPDEC35.dat",delimiter=",")
+plt.plot()
+plt.title("Temperatura promedio Caso 3")
 #plt.savefig("c3g5prom.pdf")'''

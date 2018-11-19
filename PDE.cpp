@@ -2,6 +2,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <math.h>
+#include <fstream>
 using namespace std;
 
 //Condiciones iniciales
@@ -57,6 +58,9 @@ for (int i=1;i<=50;i++)
     }
   }
 }
+caso1();
+//caso2();
+//caso3();
   return 0;
 }
 
@@ -79,14 +83,19 @@ void caso1()
 
     }
   }
+  ofstream ar1 ("datosPDEC11.dat");
+  ar1.is_open();
+
   //Actualizando tiempo
   for(int i=0; i<50; i++)
   {
     for(int j=0; j<50; j++)
     {
       temp1[i][j] = temp_fu1[i][j];
+      ar1<<temp1[i][j]<<endl;
     }
   }
+  ar1.close();
 }
 
 
@@ -116,13 +125,18 @@ void caso2()
     }
   }
 //Actualizando tiempo
+ofstream ar1 ("datosPDEC12.dat");
+ar1.is_open();
+
   for(int i=0; i<50; i++)
   {
     for(int j=0; j<50; j++)
     {
       temp2[i][j] = temp_fu2[i][j];
+
     }
   }
+  ar1.close();
 }
 }
 
@@ -154,6 +168,9 @@ void caso3()
     }
   }
   //actualizando el tiempo
+  ofstream ar1 ("datosPDEC13.dat");
+  ar1.is_open();
+  ar1.close();
   for(int i=0; i<50; i++)
   {
     for(int j=0; j<50; j++)
