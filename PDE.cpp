@@ -9,7 +9,7 @@ float k=1.62;
 double cp=820;
 double p=2.71;
 double constante=k/(cp*p);
-int N=100000;
+int N=10000;
 int tini_vari=100.0;
 int tini_calc=10;
 double t[50];
@@ -159,6 +159,7 @@ void caso3()
     for(int j=0; j<50; j++)
     {
       temp3[i][j] = temp_fu3[i][j];
+
     }
   }
 }

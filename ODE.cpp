@@ -9,9 +9,11 @@ float g=10.0;
 double c=0.2;
 float m=0.2;
 float xi=0;
+float yi=0;
 float v=300;
 float tet=45;
 int N=1800;
+#define pi 3.14159
 
 int tetmax=70;
 
@@ -50,14 +52,13 @@ int main()
   float delta=0.001;
   //Colocando las condiciones iniciales
   tiempo[0]=0.0;
-  velx[0]=v*cos(tet);
-  vely[0]=v*sin(tet);
+  velx[0]=v*cos((tet*pi)/180);
+  vely[0]=v*sin((tet*pi)/180);
   posx[0]=0.0;
   posy[0]=0.0;
 
-
-  velx[0]=v*cos(tet)-0.5*delta*(-(c*pow(velx[0],2))/m);
-  vely[0]=v*sin(tet)-0.5*delta*(-g-(c*pow(vely[0],2))/m);
+  velx[0]=v*cos((tet*pi)/180)+0.5*delta*(-(c*pow(velx[0],2))/m);
+  vely[0]=v*sin((tet*pi)/180)+0.5*delta*(-g-(c*pow(vely[0],2))/m);
 
   ofstream archivo ("datosODE1.dat");
   archivo.is_open();
@@ -82,21 +83,23 @@ int main()
 ofstream file ("datosODE2.dat");
 file.is_open();
 
-  for (int l=10;l<=tetmax;l+=10)
+  for (float l=10;l<=tetmax;l+=10)
   {
-    velx2[0]=v*cos(l);
-    vely2[0]=v*sin(l);
-    velx2[0]=v*cos(l)-0.5*delta*(vxp(velx[0],vely[0]));
-    vely2[0]=v*sin(l)-0.5*delta*(vyp(velx[0],vely[0]));
+    //cout<<l<<endl;
+    velx2[0]=v*cos((l*pi)/180);
+    vely2[0]=v*sin((l*pi)/180);
+    velx2[0]=v*cos((l*pi)/180)+0.5*delta*(-(c*pow(velx2[0],2))/m);
+    vely2[0]=v*sin((l*pi)/180)+0.5*delta*(-g-(c*pow(vely2[0],2))/m);
     posx2[0]=0.0;
     posy2[0]=0.0;
+    tiempo2[0]=0.0;
 
     for (int k=1;k<=N;k++)
     {
-      double norma_v=sqrt(velx2[k-1]*velx2[k-1]+vely2[k-1]*vely2[k-1]);
+      double norma_v2=sqrt(velx2[k-1]*velx2[k-1]+vely2[k-1]*vely2[k-1]);
 
-      velx2[k]=velx2[k-1]+delta*(-(c*norma_v*velx2[k-1])/m);
-      vely2[k]=vely2[k-1]+delta*(-g-(c*norma_v*vely2[k-1])/m);
+      velx2[k]=velx2[k-1]+delta*(-(c*norma_v2*velx2[k-1])/m);
+      vely2[k]=vely2[k-1]+delta*(-g-(c*norma_v2*vely2[k-1])/m);
 
       posx2[k]=posx2[k-1]+velx2[k-1]*delta;
       posy2[k]=posy2[k-1]+vely2[k-1]*delta;
@@ -105,7 +108,6 @@ file.is_open();
       //cout<<tiempo[k]<<","<<posx[k]<<","<<posy[k]<<","<<velx[k]<<","<<vely[k]<<endl;
       file<<tiempo2[k]<<","<<posx2[k]<<","<<posy2[k]<<","<<velx2[k]<<","<<vely2[k]<<endl;
     }
-
   }
 file.close();
   return 0;

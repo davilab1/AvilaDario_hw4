@@ -15,10 +15,11 @@ vely=datosODE1[:,4]
 
 
 plt.figure()
-plt.plot(posx,posy)
+plt.plot(posx,posy,label="45")
 plt.title('Trayectoria para 45 grados')
 plt.xlabel('x')
 plt.ylabel('y')
+plt.ylim(0,3)
 #plt.show()
 #plt.savefig(posxtiempo.pdf")
 
@@ -67,18 +68,22 @@ p7y=datosODE2[10801:12600,2]
 #v7y=datosODE2[:,34]
 
 plt.figure()
-plt.plot(p1x,p1y,label="10")
-plt.plot(p2x,p2y,label="20")
-plt.plot(p3x,p3y,label="30")
-plt.plot(p4x,p4y,label="40")
-plt.plot(p5x,p5y,label="50")
-plt.plot(p6x,p6y,label="60")
-plt.plot(p7x,p7y,label="70")
+plt.plot(abs(p1x),(p1y),label="10")
+plt.plot(abs(p2x),(p2y),label="20")
+plt.plot(abs(p3x),(p3y),label="30")
+plt.plot(abs(p4x),(p4y),label="40")
+plt.plot(abs(posx),(posy),label="45")
+plt.plot(abs(p5x),(p5y),label="50")
+plt.plot(abs(p6x),(p6y),label="60")
+plt.plot(abs(p7x),(p7y),label="70")
+plt.xlim(0,5)
+plt.ylim(0,4)
 plt.title('Variacion en angulos')
 plt.xlabel("$x$")
 plt.ylabel("$y$")
 plt.legend(loc="best")
 plt.show()
+plt.close()
 #plt.savefig("posxtiempo2.pdf")
 
 
@@ -96,33 +101,44 @@ x,y = np.meshgrid(xP,yP, sparse=True)
 #caso 1
 plt.figure()
 ax = fig.gca(projection='3d')
-
-
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Temperatura')
 
 #plt.savefig("c1g1inial.pdf")
 
 plt.figure()
 ax = fig.gca(projection='3d')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Temperatura')
 
-
-plt.legend(loc="best")
 #plt.savefig("c1g2inter.pdf")
+
 
 plt.figure()
 ax = fig.gca(projection='3d')
-
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Temperatura')
 
 plt.legend(loc="best")
 #plt.savefig("c1g3inter.pdf")
 
 plt.figure()
 ax = fig.gca(projection='3d')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Temperatura')
 
-plt.legend(loc="best")
 #plt.savefig("c1g4equi.pdf")
 
 plt.figure()
 ax = fig.gca(projection='3d')
+ax.plot_trisurf( linewidth=0.2, antialiased=True, cmap=cm.jet)
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Temperatura')
 
 plt.legend(loc="best")
 #plt.savefig("c1g5prom.pdf")
@@ -131,31 +147,46 @@ plt.legend(loc="best")
 #caso 2
 plt.figure()
 ax = fig.gca(projection='3d')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Temperatura')
 
-plt.legend(loc="best")
+
 #plt.savefig("c2g1inial.pdf")
 
 
 plt.figure()
 ax = fig.gca(projection='3d')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Temperatura')
 
 plt.legend(loc="best")
 #plt.savefig("c2g2inte.pdf")
 
 plt.figure()
 ax = fig.gca(projection='3d')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Temperatura')
 
 plt.legend(loc="best")
 #plt.savefig("c3g3inter.pdf")
 
 plt.figure()
 ax = fig.gca(projection='3d')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Temperatura')
 
 
 #plt.savefig("c2g4equi.pdf")
 
 plt.figure()
 ax = fig.gca(projection='3d')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Temperatura')
 
 
 #plt.savefig("c2g5prom.pdf")
@@ -164,25 +195,36 @@ ax = fig.gca(projection='3d')
 
 plt.figure()
 ax = fig.gca(projection='3d')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Temperatura')
 
-plt.savefig("c3g1inial.pdf")
-
-plt.figure()
-ax = fig.gca(projection='3d')
-
-plt.savefig("c3g2inter.pdf")
+#plt.savefig("c3g1inial.pdf")
 
 plt.figure()
 ax = fig.gca(projection='3d')
-
-plt.savefig("c3g3inter.pdf")
-
-plt.figure()
-ax = fig.gca(projection='3d')
-
-plt.savefig("c3g4equi.pdf")
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Temperatura')
+#plt.savefig("c3g2inter.pdf")
 
 plt.figure()
 ax = fig.gca(projection='3d')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Temperatura')
+#plt.savefig("c3g3inter.pdf")
 
-plt.savefig("c3g5prom.pdf")'''
+plt.figure()
+ax = fig.gca(projection='3d')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Temperatura')
+#plt.savefig("c3g4equi.pdf")
+
+plt.figure()
+ax = fig.gca(projection='3d')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Temperatura')
+#plt.savefig("c3g5prom.pdf")'''
