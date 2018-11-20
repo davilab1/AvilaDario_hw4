@@ -37,6 +37,7 @@ float vyin=v*sin(tet);
 
 int main()
 {
+  //Creando arreglos necesarios
   float tiempo[N];
   double velx[N];
   double vely[N];
@@ -62,7 +63,7 @@ int main()
 
   ofstream archivo ("datosODE1.dat");
   archivo.is_open();
-
+//Para angulo de 45
   for (int i=1;i<N;i++)
   {
     double norma_v=sqrt(velx[i-1]*velx[i-1]+vely[i-1]*vely[i-1]);
@@ -82,7 +83,7 @@ int main()
 //Para los casos en los que varia el angulo
 ofstream file ("datosODE2.dat");
 file.is_open();
-
+//Para los diferentes angulos
   for (float l=10;l<=tetmax;l+=10)
   {
     //cout<<l<<endl;
@@ -109,6 +110,7 @@ file.is_open();
       file<<tiempo2[k]<<","<<posx2[k]<<","<<posy2[k]<<","<<velx2[k]<<","<<vely2[k]<<endl;
     }
   }
+  
 file.close();
   return 0;
 }
